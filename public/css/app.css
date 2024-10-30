@@ -1,0 +1,15 @@
+.alert {
+    background-color: #ff1744;
+    opacity: 0.5;
+    padding: 10px;
+    position: relative;
+}
+.alert:after {
+    content: 'X';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 7px;
+    top: 3px;
+    cursor: pointer;
+}

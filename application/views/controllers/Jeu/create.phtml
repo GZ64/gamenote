@@ -1,0 +1,50 @@
+<div class="row">
+    <h2>Ajouter un Jeu</h2>
+    <hr />
+    <?php foreach ($errors as $e) : ?>
+        <div class="alert">
+		    <?= $e ?>
+        </div>
+    <?php endforeach; ?>
+	<?php
+	$user = $_SESSION['user'];
+	foreach ($user as $key=>$value) {
+		if ($key === 'ID') {
+			$IDUser = $value;
+		}
+	}
+	?>
+    <form class="col s12" method='post' enctype="multipart/form-data">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input value="<?=$helpers->foundInputValue('nom')?>" id="nom" type="text" class="validate" name="nom" aria-describedby="NomHelp">
+                <label for="nom">Entrez le nom du jeu</label>
+                <small id="NomHelp">Le nom du jeu ne doit pas dépasser 50 caractères.</small>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">settings_input_component</i>
+                <input value="<?=$helpers->foundInputValue('console')?>" id="console" type="text" class="validate" name='console' aria-describedby="ConsoleHelp">
+                <label for="console">Entrez le nom de la console</label>
+                <small id="ConsoleHelp">Le nom de la console egalement.</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <i class="material-icons">insert_photo</i>
+                    <span>File</span>
+                    <input type="file" name="picture">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                    <input type="hidden" name="ID_users" id="ID_users" value="<?= $IDUser ?>"/>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn-large"><i class="material-icons right">send</i>Sauvegarder</button>
+        <a href="<?=LINK_WEB?>jeu" class="waves-effect waves-light btn-large">Annuler</a>
+    </form>
+</div>
+

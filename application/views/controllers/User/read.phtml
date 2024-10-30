@@ -1,0 +1,9 @@
+<div class="blog-post">
+    <a class="btn btn-success" href="<?php echo LINK_WEB ?>jeu/update/<?php echo $jeu->id ?>">Update</a>
+    <a class="btn btn-danger" href="<?php echo LINK_WEB ?>jeu/delete/<?php echo $jeu->id ?>">Delete</a>
+</div>
+<div class="blog-post">
+    <h2 class="blog-post-title"><?php echo $jeu->title ?></h2>
+    <p class="blog-post-meta"><?php echo date('F n, Y', strtotime($jeu->update)) ?> by <a href="#">Mark</a></p>
+    <p><?php echo $jeu->content ?></p>
+</div>

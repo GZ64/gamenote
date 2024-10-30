@@ -1,0 +1,44 @@
+<div class="row">
+    <h2>Modifications Jeu</h2>
+    <hr />
+    <?php foreach ($errors as $e) : ?>
+        <div class="alert">
+		    <?= $e ?>
+        </div>
+    <?php endforeach; ?>
+    <form class="col s12" method='post' enctype="multipart/form-data">
+        <input type="hidden" name="<?=$primaryName?>" value="<?=$element->jid?>" />
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+<!--                --><?php //var_dump($element)  ?>
+                <input value="<?=$helpers->foundInputValue('nomJeux', $element)?>" id="nom" type="text" class="validate" name="nom" aria-describedby="NomHelp">
+                <label for="nom">Changez le nom du jeu</label>
+                <small id="NomHelp">Le nom du jeu ne doit pas dépasser 50 caractères.</small>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">settings_input_component</i>
+                <input value="<?=$helpers->foundInputValue('console', $element)?>" id="console" type="text" class="validate" name='console' aria-describedby="ConsoleHelp">
+                <label for="console">Changez le nom de la console</label>
+                <small id="ConsoleHelp">Le nom de la console egalement.</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <i class="material-icons">insert_photo</i>
+                    <span>File</span>
+                    <input type="file" name="picture">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                    <input type="hidden" name="ID_users" id="ID_users" value="<?= $element->uid ?>"/>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn-large"><i class="material-icons right">send</i>Modifier</button>
+        <a href="<?=LINK_WEB?>jeu/read/<?=$element->ID?>" class="waves-effect waves-light btn-large">Annuler</a>
+    </form>
+</div>
+

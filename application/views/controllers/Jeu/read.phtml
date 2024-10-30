@@ -1,0 +1,63 @@
+<?php foreach ($elements as $jeu) : ?>
+	<?php if ($helpers->isAuthentificated()) : ?>
+        <div>
+            <a class="waves-effect waves-light btn-large" href='<?= LINK_WEB ?>jeu/update/<?= $jeu->jid ?>'>Update</a>
+            <a class="waves-effect waves-light btn-large" href='<?= LINK_WEB ?>jeu/delete/<?= $jeu->jid ?>'>Delete</a>
+        </div>
+	<?php endif; ?>
+    <div>
+        <img class="activator" src="../../public/img/jeux/<?= $jeu->img ?>">
+        <h2 class="blog-post-title"><?= $jeu->nomJeux ?></h2>
+        <h3 class="blog-post-title">Ajouté par: <a href="#"><?= $jeu->nomUser ?></a></h3>
+        <p class="blog-post-meta">Console: <?= $jeu->console ?></p>
+    </div>
+    <div>
+        <a class="waves-effect waves-light btn-large" href='<?= LINK_WEB ?>commentaire/add/<?= $jeu->jid ?>'>Ajouter un commentaire</a>
+        <a class="waves-effect waves-light btn-large" href='<?= LINK_WEB ?>critere/add/<?= $jeu->jid ?>'>Ajouter une note</a>
+    </div>
+    <h4>Notes</h4>
+    <table class="striped centered responsive-table">
+        <thead>
+        <tr>
+            <th>Membre</th>
+            <th>Graphisme</th>
+            <th>Gameplay</th>
+            <th>Durée de vie</th>
+        </tr>
+        </thead>
+
+        <tbody>
+		<?php
+		for ($i = 0, $c = sizeof($notes); $i < $c; $i++) {
+			echo '<tr><td>' . $notes[$i]['nom'] . '</td>';
+			echo ($notes[$i]['graphisme']) != '' ? '<td>' . $notes[$i]['graphisme'] . '</td>' : '<td>-</td>';
+			echo ($notes[$i]['gameplay']) != '' ? '<td>' . $notes[$i]['gameplay'] . '</td>' : '<td>-</td>';
+			echo ($notes[$i]['dureevie']) != '' ? '<td>' . $notes[$i]['dureevie'] . '</td></tr>' : '<td>-</td>';
+		}
+		?>
+        </tbody>
+    </table>
+
+    <h4>Commentaires</h4>
+    <table class="striped centered responsive-table">
+        <thead>
+        <tr>
+            <th>Membre</th>
+            <th>Graphisme</th>
+            <th>Gameplay</th>
+            <th>Durée de vie</th>
+        </tr>
+        </thead>
+
+        <tbody>
+		<?php
+		for ($i = 0, $c = sizeof($commentaires); $i < $c; $i++) {
+			echo '<tr><td>' . $commentaires[$i]['nom'] . '</td>';
+			echo ($commentaires[$i]['graphisme']) != '' ? '<td>' . $commentaires[$i]['graphisme'] . '</td>' : '<td>-</td>';
+			echo ($commentaires[$i]['gameplay']) != '' ? '<td>' . $commentaires[$i]['gameplay'] . '</td>' : '<td>-</td>';
+			echo ($commentaires[$i]['dureevie']) != '' ? '<td>' . $commentaires[$i]['dureevie'] . '</td></tr>' : '<td>-</td>';
+		}
+		?>
+        </tbody>
+    </table>
+<?php endforeach; ?>

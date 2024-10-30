@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Blog Template for Bootstrap</title>
+    <link href="<?= DATA_WEB ?>css/app.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="<?= LINK_WEB ?>">Home</a></li>
+                <li><a href="<?= LINK_WEB ?>jeu">Jeux</a></li>
+				<?php if ($helpers->isAuthentificated()) : ?>
+                    <li><a href="<?= LINK_WEB ?>user/logout">Logout</a></li>
+				<?php else: ?>
+                    <li><a href="<?= LINK_WEB ?>user/login">Login</a></li>
+				<?php endif; ?>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<?php if ($helpers->isAuthentificated()) : ?>
+    <ul id="slide-out" class="side-nav">
+        <li><div class="user-view">
+                <div class="background">
+                    <img src="images/office.jpg">
+                </div>
+                <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+                <a href="#!name"><span class="white-text name">John Doe</span></a>
+                <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div></li>
+        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+        <li><a href="#!">Second Link</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
+    <a href="#" id="flash" data-activates="slide-out" class="btn-floating button-collapse pulse"><i class="material-icons">menu</i></a>
+<?php endif; ?>
+<div class="blog-header">
+    <div class="container">
+        <h1 class="blog-title">Gamenote</h1>
+        <p class="lead blog-description">Un site de notation de jeux video</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col s8">
+			
+			<?= $viewContent ?>
+
+        </div><!-- /.blog-main -->
+
+        <div class="col s3 offset-s1">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
+                    fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </div>
+            <div class="sidebar-module">
+				<?php
+				$router = \library\core\Router::getInstance();
+				$router::dispatchModule('jeu', 'last', array(2));
+				?>
+            </div>
+            <div class="sidebar-module">
+                <h4>Elsewhere</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ol>
+            </div>
+        </div><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                    content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="<?= DATA_WEB ?>js/popper.min.js"></script>
+<script src="<?= DATA_WEB ?>js/materialize.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+        $(".button-collapse").sideNav();
+        setTimeout(function() {
+            console.log('delay');
+           $('#flash').removeClass('pulse') ;
+        }, 5000);
+        $('.alert').on('click', function () {
+            $(this).hide();
+        });
+    });
+</script>
+</body>
+</html>

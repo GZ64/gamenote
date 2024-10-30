@@ -1,0 +1,8 @@
+<h3>Last jeux</h3>
+<ul>
+    <?php foreach ($elements as $e) : ?>
+        <li>
+            <a href="<?=LINK_WEB?>jeu/read/<?=$e->ID_jeux?>"><?=$e->nomJeux?></a>
+        </li>
+    <?php endforeach ?>
+</ul>

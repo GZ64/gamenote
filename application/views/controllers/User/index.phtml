@@ -1,0 +1,9 @@
+<?php foreach ($listJeu as $jeu) : ?>
+    <div class="block-post">
+        <a href="<?php echo LINK_WEB ?>jeu/read/<?php echo $jeu->id ?>">
+            <h2 class="blog-post-title"><?php echo $jeu->title ?></h2>
+        </a>
+        <p class="blog-post-meta"><?php echo date('F n, Y', strtotime($jeu->update)) ?> by <a href="#">Mark</a></p>
+        <p><?php echo substr($jeu->content, 0, 100) ?> ...</p>
+    </div>
+<?php endforeach; ?>

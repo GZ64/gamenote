@@ -1,0 +1,17 @@
+<div class="blog-post">
+    <h2 class="blog-post-title">Delete Jeu</h2>
+    <hr />
+    <?php foreach ($errors as $e) : ?>
+        <div class="alert alert-danger">
+            <?=$e?>
+        </div>
+    <?php endforeach; ?>
+    <form method='post'>
+        <p>
+            Confirm delete jeu: <strong>'<?=$element->nomJeux?>'</strong>, created at: <strong>'<?=date('F j, Y', strtotime($element->userUpdate))?>'</strong>
+        </p>
+        <button type="submit" name="confirm" class="btn btn-danger">Delete</button>
+        <a href="<?=LINK_WEB?>jeu/read/<?=$element->id?>" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+

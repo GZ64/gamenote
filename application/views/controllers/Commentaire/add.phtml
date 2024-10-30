@@ -1,0 +1,110 @@
+<div class="row">
+    <h2>Ajouter un Commentaire à:
+        <?php foreach ($jeux as $jeu) : ?>
+            <?= $jeu->nomJeux ?>
+	    <?php endforeach; ?></h2>
+    <hr/>
+	<?php foreach ($errors as $e) : ?>
+        <div class="alert">
+			<?= $e ?>
+        </div>
+	<?php endforeach; ?>
+	<?php
+	$user = $_SESSION['user'];
+	foreach ($user as $key => $value) {
+		if ($key === 'ID') {
+			$IDUser = $value;
+		}
+	}
+	?>
+    <h4>Commentaire à propos du graphisme:</h4>
+    <form class="col s12" method='post'>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="commentaire-graphisme"
+                          class="materialize-textarea" name="commentaires"><?= $helpers->foundInputValue('content') ?></textarea>
+                <input type="hidden" name="ID_users" value="<?= $IDUser ?>" />
+                <input type="hidden" name="ID_criteres" value="1" />
+                <input type="hidden" name="ID_jeux" value="<?= $IDJeux ?>" />
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn-large"><i class="material-icons right">send</i>Envoyer
+        </button>
+        <a href="<?= LINK_WEB ?>jeu/read/<?= $IDJeux ?>" class="waves-effect waves-light btn-large">Annuler</a>
+    </form>
+    
+    <h4>Commentaire à propos du gameplay:</h4>
+    <form class="col s12" method='post'>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="commentaire-gameplay"
+                          class="materialize-textarea" name="commentaires"><?= $helpers->foundInputValue('content') ?></textarea>
+                <input type="hidden" name="ID_users" value="<?= $IDUser ?>" />
+                <input type="hidden" name="ID_criteres" value="2" />
+                <input type="hidden" name="ID_jeux" value="<?= $IDJeux ?>" />
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn-large"><i class="material-icons right">send</i>Envoyer
+        </button>
+        <a href="<?= LINK_WEB ?>jeu/read/<?= $IDJeux ?>" class="waves-effect waves-light btn-large">Annuler</a>
+    </form>
+    
+    <h4>Commentaire à propos du durée de vie:</h4>
+    <form class="col s12" method='post'>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="commentaire-dureevie"
+                          class="materialize-textarea" name="commentaires"><?= $helpers->foundInputValue('content') ?></textarea>
+                <input type="hidden" name="ID_users" value="<?= $IDUser ?>" />
+                <input type="hidden" name="ID_criteres" value="3" />
+                <input type="hidden" name="ID_jeux" value="<?= $IDJeux ?>" />
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn-large"><i class="material-icons right">send</i>Envoyer
+        </button>
+        <a href="<?= LINK_WEB ?>jeu/read/<?= $IDJeux ?>" class="waves-effect waves-light btn-large">Annuler</a>
+    </form>
+    <form class="col s12" method='post'>
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input value="<?= $helpers->foundInputValue('nom') ?>" id="nom" type="text" class="validate" name="nom"
+                       aria-describedby="NomHelp">
+                <label for="nom">Entrez le nom du jeu</label>
+                <small id="NomHelp">Le nom du jeu ne doit pas dépasser 50 caractères.</small>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">settings_input_component</i>
+                <input value="<?= $helpers->foundInputValue('console') ?>" id="console" type="text" class="validate"
+                       name='console' aria-describedby="ConsoleHelp">
+                <label for="console">Entrez le nom de la console</label>
+                <small id="ConsoleHelp">Le nom de la console egalement.</small>
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn-large"><i class="material-icons right">send</i>Sauvegarder
+        </button>
+        <a href="<?= LINK_WEB ?>jeu" class="waves-effect waves-light btn-large">Annuler</a>
+    </form>
+    <form class="col s12" method='post'>
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input value="<?= $helpers->foundInputValue('nom') ?>" id="nom" type="text" class="validate" name="nom"
+                       aria-describedby="NomHelp">
+                <label for="nom">Entrez le nom du jeu</label>
+                <small id="NomHelp">Le nom du jeu ne doit pas dépasser 50 caractères.</small>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">settings_input_component</i>
+                <input value="<?= $helpers->foundInputValue('console') ?>" id="console" type="text" class="validate"
+                       name='console' aria-describedby="ConsoleHelp">
+                <label for="console">Entrez le nom de la console</label>
+                <small id="ConsoleHelp">Le nom de la console egalement.</small>
+            </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn-large"><i class="material-icons right">send</i>Sauvegarder
+        </button>
+        <a href="<?= LINK_WEB ?>jeu" class="waves-effect waves-light btn-large">Annuler</a>
+    </form>
+</div>
+
